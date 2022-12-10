@@ -1,6 +1,6 @@
-default: init
+default: build
 
-init:
+build:
 	docker-compose build
 
 run:
