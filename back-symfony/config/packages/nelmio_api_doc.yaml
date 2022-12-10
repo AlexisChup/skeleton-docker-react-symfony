@@ -1,0 +1,64 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: SIGL
+            description: Projet trop cool la vache omg
+            version: 1.0.0
+        tags:
+            -   name: "User"
+                description: "Endpoints pour récupérer les données des utilisateurs"
+            -   name: "Admin"
+                description: "Endpoints pour récupérer les données admin"
+            -   name: "Apprenti"
+                description: "Endpoints pour récupérer les données des apprentis"
+            -   name: "CentreFormation"
+                description: "Endpoints pour récupérer les données des centres de formation"
+            -   name: "Coordinateur"
+                description: "Endpoints pour récupérer les données des coordinateurs"
+            -   name: "Critere"
+                description: "Endpoints pour récupérer les données des critères"
+            -   name: "Enseignant"
+                description: "Endpoints pour récupérer les données des enseignants"
+            -   name: "Entreprise"
+                description: "Endpoints pour récupérer les données des entreprises"
+            -   name: "Entretien"
+                description: "Endpoints pour récupérer les données des entretiens"
+            -   name: "Evaluation"
+                description: "Endpoints pour récupérer les données des évaluations"
+            -   name: "Event"
+                description: "Endpoints pour récupérer les données des événements"
+            -   name: "Externe"
+                description: "Endpoints pour récupérer les données des intervenants externes"
+            -   name: "Grille"
+                description: "Endpoints pour récupérer les données des grilles d'évaluation"
+            -   name: "Jury"
+                description: "Endpoints pour récupérer les données des jurys"
+            -   name: "Livrable"
+                description: "Endpoints pour récupérer les données des livrables"
+            -   name: "MaitreApprentissage"
+                description: "Endpoints pour récupérer les données des maitres d'apprentissages"
+            -   name: "Niveau"
+                description: "Endpoints pour récupérer les données des niveaux de notation pour les critères"
+            -   name: "NotesPeriode"
+                description: "Endpoints pour récupérer les données des notes sur les périodes d'alternance"
+            -   name: "Promotion"
+                description: "Endpoints pour récupérer les données des promotions"
+            -   name: "Soutenance"
+                description: "Endpoints pour récupérer les données des soutenances"
+    areas: # to filter documented areas
+        default:
+            disable_default_routes: true
+#        user:
+#            path_patterns: [/api/user]
+#        admin:
+#            path_patterns:
+#                - /api/admin
+#        apprenti:
+#            path_patterns:
+#                - /api/apprenti
+#        centre-formation:
+#            path_patterns:
+#                - /api/centre-formation
+#    models:
+#        names:
+#            - { alias: 'User', type: App\Entity\User, areas: [user] }
