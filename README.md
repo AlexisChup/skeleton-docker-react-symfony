@@ -2,15 +2,19 @@
 
 ## Folder Structure
 
-├── back-symfony
-├── front-react
-├── nginx
-├── php-fpm
-├── .env
-├── .gitignore
-├── Makefile
-├── README.md
-├── docker-compose.yam
+```
+📂skeleton-docker-react-symfony
+┣📦apps
+┃┣ 📂back-symfony
+┃┣ 📂front-react
+┃┣ 📂logs
+┃┣ 📂nginx
+┃┗ 📂php-fpm
+┣ 📜.env
+┣ 📜.gitignore
+┣ 📜Makefile
+┗ 📜README.md
+```
 
 ## Installation
 
