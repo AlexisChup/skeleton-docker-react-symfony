@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import http from "../api/axios-http";
 import "./Product.css";
 
@@ -21,9 +23,14 @@ export default class Product extends Component {
   }
 
   handleFetchAll = () => {
-    http.get("/product/all").then((res) => {
-      this.setState({ products: res.data });
-    });
+    http
+      .get("/product/all")
+      .then((res) => {
+        this.setState({ products: res.data });
+      })
+      .catch((e) => {
+        toast.error("Could not post product to db." + e.response.data.detail);
+      });
   };
 
   handleFormProduct = (key, value) => {
@@ -35,17 +42,19 @@ export default class Product extends Component {
   handlePostProduct = (e) => {
     e.preventDefault();
     this.setState({ isRequesting: true });
-    let copyOfProducts = [...this.state.products];
     http
       .post("/product/create", {
         ...this.state.productEditing,
         price: parseInt(this.state.productEditing.price),
       })
       .then((res) => {
-        copyOfProducts.push(this.state.productEditing);
-        this.setState({ products: copyOfProducts });
+        this.handleFetchAll();
+        toast.success("Product has been saved to db.");
       })
-      .catch((e) => console.log("ERROR POSTING: " + e))
+      .catch((e) => {
+        console.log("ERROR POSTING: " + JSON.stringify(e.response));
+        toast.error("Could not post product to db." + e.response.data.detail);
+      })
       .finally(() => this.setState({ isRequesting: false }));
   };
 
@@ -55,6 +64,11 @@ export default class Product extends Component {
       .delete("/product/remove/" + id, this.state.productEditing)
       .then((res) => {
         this.handleFetchAll();
+        toast.warning("Product has been deleted.");
+      })
+      .catch((e) => {
+        console.log("ERROR DELETING: " + JSON.stringify(e.response));
+        toast.error("Could not delete product in db." + e.response.data.detail);
       });
   };
 
@@ -136,7 +150,11 @@ export default class Product extends Component {
                   <div className="col">Description</div>
                   <div className="col">DEL</div>
                 </div>
-              ) : null}
+              ) : (
+                <div>
+                  <h3>No product yet.</h3>
+                </div>
+              )}
               {this.state.products.map((product, index) => {
                 return (
                   <div className="row" key={index}>
