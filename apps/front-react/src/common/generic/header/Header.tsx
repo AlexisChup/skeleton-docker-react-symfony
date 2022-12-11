@@ -1,6 +1,5 @@
-import React from "react";
 import "./Header.css";
-import { BrowserRouter, NavLink, Routes, Route } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
   let activeClassName: string = "nav-active";
@@ -25,6 +24,7 @@ export default function Header() {
         >
           Contact
         </NavLink>
+        <NavLink to="dashboard">Dashboard</NavLink>
       </nav>
     </header>
   );
