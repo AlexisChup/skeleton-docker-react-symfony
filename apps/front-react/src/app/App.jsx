@@ -39,7 +39,12 @@ export default function App() {
               <Navigate to="/" state="From Dashboard" />
             )
           }
-        />
+        >
+          <Route
+            path="settings"
+            element={<p>This is the nested Settings route</p>}
+          />
+        </Route>
         <Route path="terms-of-service" element={<TermOfService />} />
         <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
         <Route path="*" element={<Error />} />
