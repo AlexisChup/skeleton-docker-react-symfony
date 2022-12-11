@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import http from "../api/axios-http";
+import http from "../../app/axios-http";
 import "./Product.css";
 
 export default class Product extends Component {
@@ -29,7 +29,11 @@ export default class Product extends Component {
         this.setState({ products: res.data });
       })
       .catch((e) => {
-        toast.error("Could not post product to db." + e.response.data.detail);
+        toast.error(
+          "Could not post product to db. Error code:" +
+            e.response.data.status +
+            ". See console log for further details."
+        );
       });
   };
 
@@ -52,8 +56,12 @@ export default class Product extends Component {
         toast.success("Product has been saved to db.");
       })
       .catch((e) => {
-        console.log("ERROR POSTING: " + JSON.stringify(e.response));
-        toast.error("Could not post product to db." + e.response.data.detail);
+        console.log("ERROR POSTING: " + JSON.stringify(e.response.data.detail));
+        toast.error(
+          "Could not post product to db. Error code:" +
+            e.response.data.status +
+            ". See console log for further details."
+        );
       })
       .finally(() => this.setState({ isRequesting: false }));
   };
@@ -67,8 +75,14 @@ export default class Product extends Component {
         toast.warning("Product has been deleted.");
       })
       .catch((e) => {
-        console.log("ERROR DELETING: " + JSON.stringify(e.response));
-        toast.error("Could not delete product in db." + e.response.data.detail);
+        console.log(
+          "ERROR DELETING: " + JSON.stringify(e.response.data.detail)
+        );
+        toast.error(
+          "Could not delete product in db. Error code:" +
+            e.response.data.status +
+            ". See console log for further details."
+        );
       });
   };
 
