@@ -16,6 +16,7 @@
         "doctrine/orm": "^2.13",
         "fzaninotto/faker": "^1.5",
         "gedmo/doctrine-extensions": "^3.9",
+        "lexik/jwt-authentication-bundle": "^2.16",
         "nelmio/api-doc-bundle": "^4.10.0",
         "nelmio/cors-bundle": "^2.2",
         "phpdocumentor/reflection-docblock": "^5.3",
