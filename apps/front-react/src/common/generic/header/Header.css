@@ -1,4 +1,23 @@
-.nav-active {
-  color: grey;
+.navbar-navlink-active {
+  color: #2b2c34;
   font-weight: bold;
+}
+
+.navbar-navlink {
+  color: #d1d1e9;
+}
+
+.navbar-navlink,
+.navbar-navlink:hover,
+.navbar-navlink-active,
+.navbar-navlink-active:hover {
+  text-decoration: none;
+  font-size: large;
+}
+
+.navbar-navlink:hover {
+  color: #2b2c34;
+}
+.navbar-navlink-active:hover {
+  color: #d1d1e9;
 }

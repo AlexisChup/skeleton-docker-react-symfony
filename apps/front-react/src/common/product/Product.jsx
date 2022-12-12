@@ -97,7 +97,7 @@ export default class Product extends Component {
         <div className="row">
           <div className="col-sm">
             <h2>Create a product</h2>
-            <form>
+            <form className="p-3 shadow rounded">
               <div className="form-row">
                 <div className="form-group col-md-6">
                   <label htmlFor="inputName">Name</label>
@@ -146,7 +146,7 @@ export default class Product extends Component {
               ) : (
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary btn-sm"
                   onClick={(e) => this.handlePostProduct(e)}
                 >
                   Submit
@@ -156,7 +156,7 @@ export default class Product extends Component {
           </div>
           <div className="col-sm">
             <h2>Product's list</h2>
-            <div className="container bg-white text-dark rounded container-products">
+            <div className="container bg-white text-dark rounded container-products shadow">
               {this.state.products.length > 0 ? (
                 <div className="row bg-dark text-white">
                   <div className="col">Name</div>
@@ -179,7 +179,7 @@ export default class Product extends Component {
                     </div>
                     <div className="overflow-hidden col">
                       <button
-                        className="btn btn-danger"
+                        className="btn btn-danger btn-sm"
                         onClick={(e) => this.handleDeleteProduct(e, product.id)}
                       >
                         DEL

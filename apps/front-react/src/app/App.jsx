@@ -25,32 +25,36 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home login={handleLogin} />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route
-          path="dashboard"
-          element={
-            loggedIn ? (
-              <Dashboard logout={handleLogout} />
-            ) : (
-              <Navigate to="/" state="From Dashboard" />
-            )
-          }
-        >
-          <Route
-            path="settings"
-            element={<p>This is the nested Settings route</p>}
-          />
-        </Route>
-        <Route path="terms-of-service" element={<TermOfService />} />
-        <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
-      <ToastContainer />
-      <Footer />
+      <div id="app-content">
+        <Header id="header-content" />
+        <div id="body-content">
+          <Routes>
+            <Route path="/" element={<Home login={handleLogin} />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route
+              path="dashboard"
+              element={
+                loggedIn ? (
+                  <Dashboard logout={handleLogout} />
+                ) : (
+                  <Navigate to="/" state="From Dashboard" />
+                )
+              }
+            >
+              <Route
+                path="settings"
+                element={<p>This is the nested Settings route</p>}
+              />
+            </Route>
+            <Route path="terms-of-service" element={<TermOfService />} />
+            <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
+            <Route path="*" element={<Error />} />
+          </Routes>
+          <ToastContainer />
+        </div>
+        <Footer id="footer-content" />
+      </div>
     </BrowserRouter>
   );
 }

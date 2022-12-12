@@ -9,7 +9,7 @@ export default function Dashboard({ logout }: { logout: any }) {
       <Link to="settings">Settings</Link>
       <br />
       <Outlet />
-      <button className="btn btn-danger" onClick={logout}>
+      <button className="btn btn-danger btn-sm" onClick={logout}>
         Logout
       </button>
     </div>
