@@ -14,7 +14,6 @@ export const authSlice = createSlice({
       state.isAuthenticated = true;
       setAuthToken(payload.token);
       localStorage.setItem("token", payload.token);
-      toast.success("Login successfully !");
     },
     logout: (state) => {
       state.isAuthenticated = false;

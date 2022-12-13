@@ -7,34 +7,31 @@ import { useDispatch } from "react-redux";
 import { login } from "../../../features/auth/authSlice";
 
 export default function Login() {
+  const initialFormLogin = {
+    email: "",
+    password: "",
+  };
+
   let [isRequesting, setRequesting] = useState(false);
+  let [formLogin, setFormLogin] = useState(initialFormLogin);
   let navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    //reqres registered sample user
-    const loginPayload = {
-      email: "user@gmail.com",
-      password: "user",
-    };
-
     const id = toast.loading("Please wait...");
-
     setRequesting(true);
-    AXIOS.post("/login_check", loginPayload)
+    AXIOS.post("/login_check", formLogin)
       .then((response) => {
         toast.update(id, {
-          render: "All is good",
+          render: "Login successfully !",
           type: "success",
           isLoading: false,
           autoClose: 3000,
           closeOnClick: true,
         });
-        console.log("RESPONSE : ", JSON.stringify(response.data));
         //get token from response
         const token = response.data.token;
-        console.log("TOKEN : ", token);
 
         dispatch(login(token));
 
@@ -52,6 +49,10 @@ export default function Login() {
         console.log(err);
       })
       .finally(() => setRequesting(false));
+  };
+
+  const handleFormLogin = (key, value) => {
+    setFormLogin({ ...formLogin, [key]: value });
   };
 
   return (
@@ -72,6 +73,8 @@ export default function Login() {
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                onChange={(e) => handleFormLogin("email", e.target.value)}
+                value={formLogin.email}
               />
               <small id="emailHelp" className="form-text text-muted">
                 user@gmail.com
@@ -84,6 +87,8 @@ export default function Login() {
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                onChange={(e) => handleFormLogin("password", e.target.value)}
+                value={formLogin.password}
               />
               <small id="emailHelp2" className="form-text text-muted">
                 user

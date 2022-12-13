@@ -40,26 +40,7 @@ export default function Header() {
               Contact
             </NavLink>
           </div>
-          <div className="ml-2">
-            <NavLink
-              to="signup"
-              className={({ isActive }) =>
-                isActive ? "navbar-navlink-active" : "navbar-navlink"
-              }
-            >
-              Signup
-            </NavLink>
-          </div>
-          <div className="ml-2">
-            <NavLink
-              to="login"
-              className={({ isActive }) =>
-                isActive ? "navbar-navlink-active" : "navbar-navlink"
-              }
-            >
-              Login
-            </NavLink>
-          </div>
+
           {isAuthenticated ? (
             <div className="ml-2">
               <NavLink
@@ -71,7 +52,30 @@ export default function Header() {
                 Dashboard
               </NavLink>
             </div>
-          ) : null}
+          ) : (
+            <>
+              <div className="ml-2">
+                <NavLink
+                  to="signup"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-navlink-active" : "navbar-navlink"
+                  }
+                >
+                  Signup
+                </NavLink>
+              </div>
+              <div className="ml-2">
+                <NavLink
+                  to="login"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-navlink-active" : "navbar-navlink"
+                  }
+                >
+                  Login
+                </NavLink>
+              </div>
+            </>
+          )}
         </div>
       </nav>
       <Logout />
