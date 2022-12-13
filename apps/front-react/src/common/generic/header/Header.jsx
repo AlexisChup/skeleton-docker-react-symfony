@@ -1,10 +1,14 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
+import Logout from "../logout/Logout";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+
   return (
     <header>
-      <nav className="d-flex justify-content-between flex-row p-3 shadow">
+      <nav className="d-flex justify-content-between flex-row p-3 shadow mb-3">
         <div className="ml-3">
           <NavLink
             to=""
@@ -16,7 +20,7 @@ export default function Header() {
           </NavLink>
         </div>
         <div className="d-flex flex-row">
-          <div>
+          <div className="ml-2">
             <NavLink
               to="about"
               className={({ isActive }) =>
@@ -26,7 +30,7 @@ export default function Header() {
               About
             </NavLink>
           </div>
-          <div className="mx-5">
+          <div className="ml-2">
             <NavLink
               to="contact"
               className={({ isActive }) =>
@@ -36,18 +40,41 @@ export default function Header() {
               Contact
             </NavLink>
           </div>
-          <div className="mr-3">
+          <div className="ml-2">
             <NavLink
-              to="dashboard"
+              to="signup"
               className={({ isActive }) =>
                 isActive ? "navbar-navlink-active" : "navbar-navlink"
               }
             >
-              Dashboard
+              Signup
             </NavLink>
           </div>
+          <div className="ml-2">
+            <NavLink
+              to="login"
+              className={({ isActive }) =>
+                isActive ? "navbar-navlink-active" : "navbar-navlink"
+              }
+            >
+              Login
+            </NavLink>
+          </div>
+          {isAuthenticated ? (
+            <div className="ml-2">
+              <NavLink
+                to="dashboard"
+                className={({ isActive }) =>
+                  isActive ? "navbar-navlink-active" : "navbar-navlink"
+                }
+              >
+                Dashboard
+              </NavLink>
+            </div>
+          ) : null}
         </div>
       </nav>
+      <Logout />
     </header>
   );
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import http from "../../app/axios-http";
+import { AXIOS } from "../../app/axios-http";
 import "./Product.css";
 
 export default class Product extends Component {
@@ -23,8 +23,7 @@ export default class Product extends Component {
   }
 
   handleFetchAll = () => {
-    http
-      .get("/product/all")
+    AXIOS.get("/product/all")
       .then((res) => {
         this.setState({ products: res.data });
       })
@@ -46,11 +45,10 @@ export default class Product extends Component {
   handlePostProduct = (e) => {
     e.preventDefault();
     this.setState({ isRequesting: true });
-    http
-      .post("/product/create", {
-        ...this.state.productEditing,
-        price: parseInt(this.state.productEditing.price),
-      })
+    AXIOS.post("/product/create", {
+      ...this.state.productEditing,
+      price: parseInt(this.state.productEditing.price),
+    })
       .then((res) => {
         this.handleFetchAll();
         toast.success("Product has been saved to db.");
@@ -68,8 +66,7 @@ export default class Product extends Component {
 
   handleDeleteProduct = (e, id) => {
     e.preventDefault();
-    http
-      .delete("/product/remove/" + id, this.state.productEditing)
+    AXIOS.delete("/product/remove/" + id, this.state.productEditing)
       .then((res) => {
         this.handleFetchAll();
         toast.warning("Product has been deleted.");
