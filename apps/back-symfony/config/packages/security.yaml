@@ -12,7 +12,7 @@ security:
                 property: email
     firewalls:
         login:
-            pattern: ^/api/login
+            pattern: ^/api/login_check
             stateless: true
             provider: app_user_provider
             json_login:
@@ -22,15 +22,21 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
         api:
-            pattern: ^/api
+            pattern:   ^/api
             stateless: true
             jwt: ~
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            lazy: true
+            stateless: true
             provider: app_user_provider
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+            jwt: ~
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -41,6 +47,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: ^/user/user-info, roles: IS_AUTHENTICATED_FULLY  }
         - { path: ^/api/admin, roles: ROLE_ADMIN }
         - { path: ^/api/user, roles: ROLE_USER }
 

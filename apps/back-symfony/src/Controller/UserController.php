@@ -11,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/user', name: 'api_user')]
 class UserController extends AbstractController
@@ -48,8 +49,10 @@ class UserController extends AbstractController
 
     #[Route('/user-info', name: 'user_info')]
     public function getUserInfo(Request $request) {
-        $decodedJwtToken = $this->jwtManager->decode($this->tokenStorageInterface->getToken());
+//        $decodedJwtToken = $this->jwtManager->decode($this->tokenStorageInterface->getToken());
         $user = $this->getUser();
-        return $this->json(["jwt"] =>$decodedJwtToken);
+        return new Response(sprintf('Logged in as %s', $this->getUser()->getEmail()));
+        $auth = $request->headers->get("Authorization");
+//        return new Response("Authorization: ". "'".$auth."'");
     }
 }
