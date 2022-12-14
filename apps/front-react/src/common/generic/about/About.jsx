@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 import "./About.css";
 
-export default class About extends Component {
-  render() {
-    return (
-      <div>
-        <h2>About</h2>
+export default function About() {
+  return (
+    <div className="container ">
+      <div className="row justify-content-center">
+        <div>
+          <h2>About</h2>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }

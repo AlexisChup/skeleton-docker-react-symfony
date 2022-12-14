@@ -68,6 +68,11 @@ export default function Home() {
         </small>
       </p>
       <div className="container">
+        <div className="row justify-content-center">
+          <div>
+            <h1>Test Skeleton</h1>
+          </div>
+        </div>
         <div className="row">
           <div className="col">
             <h2>Test Auth</h2>

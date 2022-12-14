@@ -10,6 +10,7 @@ import Dashboard from "../common/dashboard/Dashboard";
 import Error from "../common/generic/error/Error";
 import Footer from "../common/generic/footer/Footer";
 import Login from "../common/generic/login/Login";
+import Signup from "../common/generic/signup/Signup";
 import PrivacyAndCookies from "../common/generic/privacy-and-cookies/PrivacyAndCookies";
 import TermOfService from "../common/generic/term-of-service/TermOfService";
 import AuthVerify from "../common/generic/auth/AuthVerify";
@@ -58,13 +59,5 @@ export default function App() {
         <AuthVerify />
       </div>
     </BrowserRouter>
-  );
-}
-
-function Signup() {
-  return (
-    <div>
-      <h2>Signup</h2>
-    </div>
   );
 }
