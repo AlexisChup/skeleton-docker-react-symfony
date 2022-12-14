@@ -21,7 +21,7 @@ export default function Login() {
     e.preventDefault();
     const id = toast.loading("Please wait...");
     setRequesting(true);
-    AXIOS.post("/login_check", formLogin)
+    AXIOS.post("/api/login_check", formLogin)
       .then((response) => {
         toast.update(id, {
           render: "Login successfully !",

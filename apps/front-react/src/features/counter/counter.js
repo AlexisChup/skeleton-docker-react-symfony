@@ -7,7 +7,7 @@ export default function Counter() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className="col">
       <div className="row justify-center align-content-center">
         <div className="col">
           <h2>Test Redux</h2>

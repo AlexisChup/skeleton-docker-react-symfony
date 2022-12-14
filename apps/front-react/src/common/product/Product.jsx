@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AXIOS } from "../../app/axios-http";
+import { FaTrash } from "react-icons/fa";
 import "./Product.css";
 
 export default class Product extends Component {
@@ -23,7 +24,7 @@ export default class Product extends Component {
   }
 
   handleFetchAll = () => {
-    AXIOS.get("/product/all")
+    AXIOS.get("/public/product/all")
       .then((res) => {
         this.setState({ products: res.data });
       })
@@ -45,7 +46,7 @@ export default class Product extends Component {
   handlePostProduct = (e) => {
     e.preventDefault();
     this.setState({ isRequesting: true });
-    AXIOS.post("/product/create", {
+    AXIOS.post("/public/product/create", {
       ...this.state.productEditing,
       price: parseInt(this.state.productEditing.price),
     })
@@ -66,7 +67,7 @@ export default class Product extends Component {
 
   handleDeleteProduct = (e, id) => {
     e.preventDefault();
-    AXIOS.delete("/product/remove/" + id, this.state.productEditing)
+    AXIOS.delete("/public/product/remove/" + id, this.state.productEditing)
       .then((res) => {
         this.handleFetchAll();
         toast.warning("Product has been deleted.");
@@ -84,8 +85,9 @@ export default class Product extends Component {
   };
 
   render() {
+    console.log("STATE: ", this.state);
     return (
-      <div className="container my-2">
+      <div className="">
         <div className="row justify-center align-content-center">
           <div className="col">
             <h2>Test Backend</h2>
@@ -153,38 +155,37 @@ export default class Product extends Component {
           </div>
           <div className="col-sm">
             <h2>Product's list</h2>
-            <div className="container bg-white text-dark rounded container-products shadow">
-              {this.state.products.length > 0 ? (
-                <div className="row bg-dark text-white">
-                  <div className="col">Name</div>
-                  <div className="col">Price</div>
-                  <div className="col">Description</div>
-                  <div className="col">DEL</div>
-                </div>
-              ) : (
-                <div>
-                  <h3>No product yet.</h3>
-                </div>
-              )}
-              {this.state.products.map((product, index) => {
-                return (
-                  <div className="row" key={index}>
-                    <div className="overflow-hidden col">{product.name}</div>
-                    <div className="overflow-hidden col">{product.price}</div>
-                    <div className="overflow-hidden col">
-                      {product.description}
-                    </div>
-                    <div className="overflow-hidden col">
-                      <button
-                        className="btn btn-danger btn-sm"
-                        onClick={(e) => this.handleDeleteProduct(e, product.id)}
-                      >
-                        DEL
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+            <div className="container">
+              <table className="table table-striped table-sm">
+                <thead>
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Del</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.products.map((prod, index) => (
+                    <tr key={index}>
+                      <th scope="row">{prod.id}</th>
+                      <td>{prod.name}</td>
+                      <td>{prod.price}</td>
+                      <td>{prod.description}</td>
+                      <td>
+                        {" "}
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={(e) => this.handleDeleteProduct(e, prod.id)}
+                        >
+                          <FaTrash />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
