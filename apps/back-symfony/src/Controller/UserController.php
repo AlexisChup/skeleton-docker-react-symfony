@@ -12,18 +12,18 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/user', name: 'api_user')]
+
+#[Route('/api/user', name: 'api_user')]
 class UserController extends AbstractController
 {
-    public function __construct(TokenStorageInterface $tokenStorageInterface, JWTTokenManagerInterface $jwtManager)
+    public function __construct(private SerializerInterface $serializer)
     {
-        $this->jwtManager = $jwtManager;
-        $this->tokenStorageInterface = $tokenStorageInterface;
     }
 
     #[Route('/register', name: 'user_register')]
-    public function register(UserRepository $userRepo, Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function register(UserRepository $userRepo, Request $request, UserPasswordHasherInterface $passwordHasher, JWTTokenManagerInterface $JWTManager): Response
     {
         $data = json_decode($request->getContent(), true);
         $user = new User();
@@ -41,18 +41,18 @@ class UserController extends AbstractController
 
 
 
-        // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $userRepo->save($user, true);
-
-        return $this->json("OK");
+        $res = $this->serializer->normalize($user, 'json');
+        unset($res["password"]);
+        $res["token"] = $JWTManager->create($user);
+        return $this->json($res);
     }
 
-    #[Route('/user-info', name: 'user_info')]
+    #[Route('/profile', name: 'profile')]
     public function getUserInfo(Request $request) {
-//        $decodedJwtToken = $this->jwtManager->decode($this->tokenStorageInterface->getToken());
         $user = $this->getUser();
-        return new Response(sprintf('Logged in as %s', $this->getUser()->getEmail()));
-        $auth = $request->headers->get("Authorization");
-//        return new Response("Authorization: ". "'".$auth."'");
+        $res = $this->serializer->normalize($user, 'json');
+        unset($res["password"]);
+        return $this->json($res);
     }
 }

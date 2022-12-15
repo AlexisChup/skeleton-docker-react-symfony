@@ -85,7 +85,6 @@ export default class Product extends Component {
   };
 
   render() {
-    console.log("STATE: ", this.state);
     return (
       <div className="">
         <div className="row justify-center align-content-center">

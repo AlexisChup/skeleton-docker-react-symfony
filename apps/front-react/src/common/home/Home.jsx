@@ -25,7 +25,7 @@ export default function Home() {
       password: "user",
     };
 
-    AXIOS.post("/api/login_check", loginPayload)
+    AXIOS.post("/login_check", loginPayload)
       .then((response) => {
         toast.update(id, {
           render: "Login successfully !",
@@ -39,8 +39,8 @@ export default function Home() {
 
         dispatch(login(token));
 
-        //redirect user to home page
-        navigate("/");
+        //redirect user to dashboard page
+        navigate("/dashboard");
       })
       .catch((err) => {
         toast.update(id, {

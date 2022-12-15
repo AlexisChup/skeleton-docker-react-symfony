@@ -21,8 +21,6 @@ import "./App.css";
 export default function App() {
   const { isAuthenticated } = useSelector((state) => state.auth);
 
-  console.log("isAuthenticated: ", isAuthenticated);
-
   return (
     <BrowserRouter>
       <div id="app-content">
@@ -53,7 +51,7 @@ export default function App() {
             <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
             <Route path="*" element={<Error />} />
           </Routes>
-          <ToastContainer autoClose={3000} />
+          <ToastContainer autoClose={3000} position="bottom-right" />
         </div>
         <Footer id="footer-content" />
         <AuthVerify />

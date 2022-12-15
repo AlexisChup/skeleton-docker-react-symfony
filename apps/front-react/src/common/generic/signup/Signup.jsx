@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import "./Login.css";
+import React, { useState, useEffect } from "react";
+import "./Signup.css";
 import { AXIOS } from "../../../app/axios-http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { login } from "../../../features/auth/authSlice";
 
-export default function Login() {
+export default function Signup() {
   const initialFormLogin = {
     email: "",
     password: "",
@@ -21,10 +21,10 @@ export default function Login() {
     e.preventDefault();
     const id = toast.loading("Please wait...");
     setRequesting(true);
-    AXIOS.post("/login_check", formLogin)
+    AXIOS.post("/user/register", formLogin)
       .then((response) => {
         toast.update(id, {
-          render: "Login successfully !",
+          render: "Signup successfully !",
           type: "success",
           isLoading: false,
           autoClose: 3000,
@@ -35,8 +35,8 @@ export default function Login() {
 
         dispatch(login(token));
 
-        //redirect user to dashboard page
-        navigate("/dashboard");
+        //redirect user to home page
+        navigate("/");
       })
       .catch((err) => {
         toast.update(id, {
@@ -59,7 +59,7 @@ export default function Login() {
     <div className="container ">
       <div className="row justify-content-center">
         <div>
-          <h2>Login</h2>
+          <h2>Signup</h2>
         </div>
       </div>
       <div className="row justify-content-center">

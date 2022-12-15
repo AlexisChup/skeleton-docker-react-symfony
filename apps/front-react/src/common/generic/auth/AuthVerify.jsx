@@ -17,7 +17,6 @@ const AuthVerify = (props) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token && token !== "undefined") {
       const decodedJwt = parseJwt(token);
       if (decodedJwt.exp * 1000 < Date.now()) {
