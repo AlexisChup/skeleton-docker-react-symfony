@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import { AXIOS } from "../../app/axios-http";
+import { FaUserCircle, FaWrench } from "react-icons/fa";
 import "./Dashboard.css";
 
 export default function Dashboard() {
@@ -19,6 +20,8 @@ export default function Dashboard() {
       .catch((e) => console.log(e));
   };
 
+  const fetchAllUsers = () => {};
+
   useEffect(() => {
     getProfil();
   }, []);
@@ -26,37 +29,35 @@ export default function Dashboard() {
   return (
     <div className="container">
       <h2>Dashboard</h2>
-      <table className="table table-striped table-sm">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Email</th>
-            <th scope="col">UserIdentifier</th>
-            <th scope="col">Roles</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">{profile.id}</th>
-            <td>{profile.email}</td>
-            <td>{profile.userIdentifier}</td>
-            <td>{profile.roles[0]}</td>
-          </tr>
-        </tbody>
-      </table>
-      <div className="">
-        <h3>Log out</h3>
-        <button
-          type="button"
-          className="btn btn-danger btn-sm"
-          data-toggle="modal"
-          data-target="#exampleModal"
-        >
-          Logout
-        </button>
+      <div className="shadow p-3">
+        <div className="d-flex flex-row">
+          <div>
+            <NavLink
+              to="profile"
+              state={{ profile }}
+              className={({ isActive }) =>
+                isActive ? "dashboard-navlink-active" : "dashboard-navlink"
+              }
+            >
+              <FaUserCircle />
+              Profile
+            </NavLink>
+          </div>
+          <div className="mx-2">
+            <NavLink
+              to="settings"
+              className={({ isActive }) =>
+                isActive ? "dashboard-navlink-active" : "dashboard-navlink"
+              }
+            >
+              <FaWrench />
+              Settings
+            </NavLink>
+          </div>
+        </div>
+        <hr className="solid" />
+        <Outlet />
       </div>
-      <Link to="settings">Settings</Link>
-      <Outlet />
     </div>
   );
 }

@@ -1,0 +1,23 @@
+.dashboard-navlink-active {
+  color: #094067;
+  font-weight: bold;
+}
+
+.dashboard-navlink {
+  color: #d1d1e9;
+}
+
+.dashboard-navlink,
+.dashboard-navlink:hover,
+.dashboard-navlink-active,
+.dashboard-navlink-active:hover {
+  text-decoration: none;
+  font-size: large;
+}
+
+.dashboard-navlink:hover {
+  color: #094067;
+}
+.dashboard-navlink-active:hover {
+  color: #094067;
+}

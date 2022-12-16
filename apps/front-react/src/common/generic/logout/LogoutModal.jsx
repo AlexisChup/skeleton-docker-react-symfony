@@ -1,5 +1,5 @@
 import React from "react";
-import "./Logout.css";
+import "./LogoutModal.css";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../features/auth/authSlice";
 

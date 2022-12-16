@@ -11,6 +11,8 @@ import Error from "../common/generic/error/Error";
 import Footer from "../common/generic/footer/Footer";
 import Login from "../common/generic/login/Login";
 import Signup from "../common/generic/signup/Signup";
+import Profile from "../common/generic/profile/Profile";
+import Settings from "../common/generic/settings/Settings";
 import PrivacyAndCookies from "../common/generic/privacy-and-cookies/PrivacyAndCookies";
 import TermOfService from "../common/generic/term-of-service/TermOfService";
 import AuthVerify from "../common/generic/auth/AuthVerify";
@@ -42,10 +44,8 @@ export default function App() {
                 )
               }
             >
-              <Route
-                path="settings"
-                element={<p>This is the nested Settings route</p>}
-              />
+              <Route path="profile" element={<Profile />} />
+              <Route path="settings" element={<Settings />} />
             </Route>
             <Route path="terms-of-service" element={<TermOfService />} />
             <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />

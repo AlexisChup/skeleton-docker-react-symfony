@@ -1,6 +1,6 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import Logout from "../logout/Logout";
+import LogoutModal from "../logout/LogoutModal";
 import { useSelector } from "react-redux";
 
 export default function Header() {
@@ -78,7 +78,7 @@ export default function Header() {
           )}
         </div>
       </nav>
-      <Logout />
+      <LogoutModal />
     </header>
   );
 }

@@ -21,8 +21,8 @@ export default function Home() {
     setRequesting(true);
 
     const loginPayload = {
-      email: "user@gmail.com",
-      password: "user",
+      email: "admin@gmail.com",
+      password: "admin",
     };
 
     AXIOS.post("/login_check", loginPayload)
