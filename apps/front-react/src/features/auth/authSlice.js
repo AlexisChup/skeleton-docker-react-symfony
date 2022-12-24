@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { setAuthToken } from "../../app/axios-http";
 import { toast } from "react-toastify";
+import { verifyValidyOfJwt } from "../../common/generic/auth/AuthVerify";
 
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: verifyValidyOfJwt(),
 };
 
 export const authSlice = createSlice({

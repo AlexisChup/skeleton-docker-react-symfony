@@ -3,6 +3,7 @@ import { withRouter } from "./with-router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { logout } from "../../../features/auth/authSlice";
+import { setAuthToken } from "../../../app/axios-http";
 
 const parseJwt = (token) => {
   try {
@@ -12,21 +13,40 @@ const parseJwt = (token) => {
   }
 };
 
+export const verifyValidyOfJwt = () => {
+  const token = localStorage.getItem("token");
+  if (token && token !== "undefined") {
+    const decodedJwt = parseJwt(token);
+    if (decodedJwt.exp * 1000 < Date.now()) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+};
+
 const AuthVerify = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token && token !== "undefined") {
-      const decodedJwt = parseJwt(token);
-      if (decodedJwt.exp * 1000 < Date.now()) {
-        // protect every routes containing /dashboard
-        if (props.router.location.pathname.includes("dashboard")) {
-          toast.error("Token has expired. Please Log In again.");
-        }
+    // verify token when user reload page
+    if (verifyValidyOfJwt()) {
+      setAuthToken(localStorage.getItem("token"));
+    }
+  }, []);
 
-        dispatch(logout());
+  useEffect(() => {
+    const isTokenValid = verifyValidyOfJwt();
+
+    if (!isTokenValid) {
+      // protect every routes containing /dashboard
+      if (props.router.location.pathname.includes("dashboard")) {
+        toast.error("Token has expired. Please Log In again.");
       }
+
+      dispatch(logout());
     }
   }, [props.router.location]);
 
