@@ -1,28 +1,20 @@
 import React from "react";
-import "./LogoutModal.css";
-import { useDispatch } from "react-redux";
-import { logout } from "../../../features/auth/authSlice";
 
-export default function Logout() {
-  const dispatch = useDispatch();
-  const handleLogoutModal = () => {
-    dispatch(logout());
-  };
-
+export default function ResetPasswordModal(props) {
   return (
     <div
       className="modal fade"
-      id="logoutModal"
+      id="resetPasswordModal"
       tabIndex={-1}
       role="dialog"
-      aria-labelledby="logoutModalLabel"
+      aria-labelledby="resetPasswordModalLabel"
       aria-hidden="true"
     >
-      <div className="modal-dialog modal-sm" role="document">
+      <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="logoutModalLabel">
-              Logout Confirmation
+            <h5 className="modal-title" id="resetPasswordModalLabel">
+              Reset Password Confirmation
             </h5>
             <button
               type="button"
@@ -33,7 +25,7 @@ export default function Logout() {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">Do you want to logout ?</div>
+          <div className="modal-body">Do you want to reset your password ?</div>
           <div className="modal-footer">
             <button
               type="button"
@@ -46,9 +38,9 @@ export default function Logout() {
               type="button"
               className="btn btn-primary"
               data-dismiss="modal"
-              onClick={() => handleLogoutModal()}
+              onClick={() => props.handleResetPassword()}
             >
-              Logout
+              Reset
             </button>
           </div>
         </div>
