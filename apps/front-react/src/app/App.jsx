@@ -15,10 +15,11 @@ import Profile from "../common/generic/profile/Profile";
 import Settings from "../common/generic/settings/Settings";
 import HandleUsers from "../common/generic/admin/handle-users/HandleUsers";
 import PrivacyAndCookies from "../common/generic/privacy-and-cookies/PrivacyAndCookies";
-import TermOfService from "../common/generic/term-of-service/TermOfService";
+import TermsOfService from "../common/generic/terms-of-service/TermsOfService";
 import AuthVerify from "../common/generic/auth/AuthVerify";
 
 import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 export default function App() {
@@ -49,7 +50,7 @@ export default function App() {
               <Route path="settings" element={<Settings />} />
               <Route path="handle-users" element={<HandleUsers />} />
             </Route>
-            <Route path="terms-of-service" element={<TermOfService />} />
+            <Route path="terms-of-service" element={<TermsOfService />} />
             <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
             <Route path="*" element={<Error />} />
           </Routes>

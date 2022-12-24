@@ -87,6 +87,7 @@ export default function Signup() {
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"
+                autoComplete="on"
                 onChange={(e) => handleFormLogin("password", e.target.value)}
                 value={formLogin.password}
               />

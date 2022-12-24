@@ -84,6 +84,7 @@ export default function Login() {
               <label htmlFor="exampleInputPassword1">Password</label>
               <input
                 type="password"
+                autoComplete="on"
                 className="form-control"
                 id="exampleInputPassword1"
                 placeholder="Password"

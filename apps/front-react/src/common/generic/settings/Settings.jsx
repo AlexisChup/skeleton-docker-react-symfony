@@ -42,30 +42,32 @@ export default function Settings() {
       <div>
         <div>
           <h4>Reset Password</h4>
-          <div className="from-group">
-            <input
-              type="password"
-              name="reset-password"
-              id="reset-password"
-              aria-describedby="reset-password"
-              placeholder="********"
-              value={password}
-              autoComplete="on"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <small id="reset-password-help" className="form-text text-muted">
-              8 characters
-            </small>
-          </div>
-          <button
-            disabled={isRequesting}
-            type="submit"
-            className="btn btn-warning btn-sm"
-            data-toggle="modal"
-            data-target="#resetPasswordModal"
-          >
-            Reset
-          </button>
+          <form>
+            <div className="from-group">
+              <input
+                type="password"
+                name="reset-password"
+                id="reset-password"
+                aria-describedby="reset-password"
+                placeholder="********"
+                value={password}
+                autoComplete="on"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <small id="reset-password-help" className="form-text text-muted">
+                8 characters
+              </small>
+            </div>
+            <button
+              disabled={isRequesting}
+              type="submit"
+              className="btn btn-warning btn-sm"
+              data-toggle="modal"
+              data-target="#resetPasswordModal"
+            >
+              Reset
+            </button>
+          </form>
         </div>
       </div>
       <div className="">

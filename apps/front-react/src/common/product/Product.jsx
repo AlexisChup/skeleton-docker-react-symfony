@@ -154,8 +154,11 @@ export default class Product extends Component {
           </div>
           <div className="col-sm">
             <h2>Product's list</h2>
-            <div className="container">
-              <table className="table table-striped table-sm">
+            <div
+              className="container"
+              style={{ overflowY: "scroll", maxHeight: "30vh" }}
+            >
+              <table className="table table-striped table-sm hover">
                 <thead>
                   <tr>
                     <th scope="col">Id</th>

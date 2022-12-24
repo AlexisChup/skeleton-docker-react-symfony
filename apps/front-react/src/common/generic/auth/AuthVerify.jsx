@@ -40,7 +40,7 @@ const AuthVerify = (props) => {
   useEffect(() => {
     const isTokenValid = verifyValidyOfJwt();
 
-    if (!isTokenValid) {
+    if (!isTokenValid && localStorage.getItem("token")) {
       // protect every routes containing /dashboard
       if (props.router.location.pathname.includes("dashboard")) {
         toast.error("Token has expired. Please Log In again.");
