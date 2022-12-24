@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { AXIOS } from "../../app/axios-http";
 import { FaUserCircle, FaWrench, FaUsers } from "react-icons/fa";
+import Spinner from "../generic/spinner/Spinner";
 import "./Dashboard.css";
 
 export default function Dashboard() {
+  let [isRequesting, setIsRequesting] = useState(false);
   let navigate = useNavigate();
 
   const initialStateProfil = {
@@ -17,12 +19,14 @@ export default function Dashboard() {
   let [profile, setProfile] = useState(initialStateProfil);
 
   useEffect(() => {
+    setIsRequesting(true);
     AXIOS.get("/user/profile")
       .then((res) => {
         setProfile(res.data);
         navigate("/dashboard/profile", { state: { profile: res.data } });
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e))
+      .finally(() => setIsRequesting(false));
   }, []);
 
   return (
@@ -68,7 +72,7 @@ export default function Dashboard() {
           ) : null}
         </div>
         <hr className="solid" />
-        <Outlet />
+        {isRequesting ? <Spinner /> : <Outlet />}
       </div>
     </div>
   );

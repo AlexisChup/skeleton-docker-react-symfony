@@ -6,8 +6,10 @@ import "./Settings.css";
 
 export default function Settings() {
   let [password, setPassword] = useState("");
+  let [isRequesting, setIsRequesting] = useState(false);
 
   const handleResetPassword = () => {
+    setIsRequesting(true);
     const id = toast.loading("Please wait...");
     AXIOS.post("/user/reset-password", { newPassword: password })
       .then((response) => {
@@ -30,7 +32,8 @@ export default function Settings() {
           closeOnClick: true,
         });
         console.log(err);
-      });
+      })
+      .finally(() => setIsRequesting(false));
   };
 
   return (
@@ -45,7 +48,7 @@ export default function Settings() {
               name="reset-password"
               id="reset-password"
               aria-describedby="reset-password"
-              placeholder="*******"
+              placeholder="********"
               value={password}
               autoComplete="on"
               onChange={(e) => setPassword(e.target.value)}
@@ -55,6 +58,7 @@ export default function Settings() {
             </small>
           </div>
           <button
+            disabled={isRequesting}
             type="submit"
             className="btn btn-warning btn-sm"
             data-toggle="modal"
@@ -67,6 +71,7 @@ export default function Settings() {
       <div className="">
         <h4>Log out</h4>
         <button
+          disabled={isRequesting}
           type="button"
           className="btn btn-danger btn-sm"
           data-toggle="modal"
