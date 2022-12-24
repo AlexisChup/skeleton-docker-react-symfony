@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { Outlet, NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { AXIOS } from "../../app/axios-http";
-import { FaUserCircle, FaWrench } from "react-icons/fa";
+import { FaUserCircle, FaWrench, FaUsers } from "react-icons/fa";
 import "./Dashboard.css";
 
 export default function Dashboard() {
+  let navigate = useNavigate();
+
   const initialStateProfil = {
     id: null,
     email: "",
@@ -14,16 +16,13 @@ export default function Dashboard() {
 
   let [profile, setProfile] = useState(initialStateProfil);
 
-  const getProfil = () => {
-    AXIOS.get("/user/profile")
-      .then((res) => setProfile(res.data))
-      .catch((e) => console.log(e));
-  };
-
-  const fetchAllUsers = () => {};
-
   useEffect(() => {
-    getProfil();
+    AXIOS.get("/user/profile")
+      .then((res) => {
+        setProfile(res.data);
+        navigate("/dashboard/profile", { state: { profile: res.data } });
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   return (
@@ -31,7 +30,7 @@ export default function Dashboard() {
       <h2>Dashboard</h2>
       <div className="shadow p-3">
         <div className="d-flex flex-row">
-          <div>
+          <div className="mr-2">
             <NavLink
               to="profile"
               state={{ profile }}
@@ -43,7 +42,7 @@ export default function Dashboard() {
               Profile
             </NavLink>
           </div>
-          <div className="mx-2">
+          <div className="mr-2">
             <NavLink
               to="settings"
               className={({ isActive }) =>
@@ -54,6 +53,19 @@ export default function Dashboard() {
               Settings
             </NavLink>
           </div>
+          {profile.roles.includes("ROLE_ADMIN") ? (
+            <div className="mr-2">
+              <NavLink
+                to="handle-users"
+                className={({ isActive }) =>
+                  isActive ? "dashboard-navlink-active" : "dashboard-navlink"
+                }
+              >
+                <FaUsers />
+                Handle Users
+              </NavLink>
+            </div>
+          ) : null}
         </div>
         <hr className="solid" />
         <Outlet />

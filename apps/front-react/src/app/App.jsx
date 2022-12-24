@@ -13,6 +13,7 @@ import Login from "../common/generic/login/Login";
 import Signup from "../common/generic/signup/Signup";
 import Profile from "../common/generic/profile/Profile";
 import Settings from "../common/generic/settings/Settings";
+import HandleUsers from "../common/generic/admin/handle-users/HandleUsers";
 import PrivacyAndCookies from "../common/generic/privacy-and-cookies/PrivacyAndCookies";
 import TermOfService from "../common/generic/term-of-service/TermOfService";
 import AuthVerify from "../common/generic/auth/AuthVerify";
@@ -46,6 +47,7 @@ export default function App() {
             >
               <Route path="profile" element={<Profile />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="handle-users" element={<HandleUsers />} />
             </Route>
             <Route path="terms-of-service" element={<TermOfService />} />
             <Route path="privacy-and-cookies" element={<PrivacyAndCookies />} />
