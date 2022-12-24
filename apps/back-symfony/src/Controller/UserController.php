@@ -55,4 +55,25 @@ class UserController extends AbstractController
         unset($res["password"]);
         return $this->json($res);
     }
+
+    #[Route('/reset-password', name: 'reset-password')]
+    public function resetPassword(UserRepository $userRepo, Request $request, UserPasswordHasherInterface $passwordHasher) {
+        $data = json_decode($request->getContent(), true);
+        $user = $this->getUser();
+
+        $plaintextNewPassword =$data["newPassword"];
+        $hashedNewPassword = $passwordHasher->hashPassword(
+            $user,
+            $plaintextNewPassword
+        );
+
+        $user->setPassword($hashedNewPassword);
+        $userRepo->save($user, true);
+        $res = array(
+            "code" => "201",
+            "message" => "Password has been changed.",
+        );
+
+        return $this->json($res);
+    }
 }
