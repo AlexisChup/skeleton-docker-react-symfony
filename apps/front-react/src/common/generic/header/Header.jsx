@@ -1,6 +1,6 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import LogoutModal from "../logout/LogoutModal";
+import LogoutModal from "../logout/logout-modal/LogoutModal";
 import { useSelector } from "react-redux";
 
 export default function Header() {

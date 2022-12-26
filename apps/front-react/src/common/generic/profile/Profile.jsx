@@ -21,10 +21,16 @@ export default function Profile() {
         </thead>
         <tbody>
           <tr>
-            <th scope="row">{profile.id}</th>
-            <td>{profile.email}</td>
-            <td>{profile.userIdentifier}</td>
-            <td>{profile.roles[0]}</td>
+            <th className="align-middle" scope="row">
+              {profile.id}
+            </th>
+            <td className="align-middle">{profile.email}</td>
+            <td className="align-middle">{profile.userIdentifier}</td>
+            <td className="align-middle">
+              {profile.roles.map((role, indexRole) => {
+                return <div key={indexRole}>{role}</div>;
+              })}
+            </td>
           </tr>
         </tbody>
       </table>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AXIOS } from "../../../../app/axios-http";
 import Spinner from "../../spinner/Spinner";
 import { FaPen } from "react-icons/fa";
-import HandleUsersModal from "../modal-handle-users/HandleUsersModal";
+import HandleUsersModal from "./handle-users-modal/HandleUsersModal";
 import Button from "react-bootstrap/Button";
 
 export default function HandleUsers() {

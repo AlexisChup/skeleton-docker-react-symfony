@@ -3,8 +3,8 @@ import "./HandleUsersModal.css";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Spinner from "../../spinner/Spinner";
-import { AXIOS } from "../../../../app/axios-http";
+import Spinner from "../../../spinner/Spinner";
+import { AXIOS } from "../../../../../app/axios-http";
 import { toast } from "react-toastify";
 
 export default function HandleUsersModal(props) {

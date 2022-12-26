@@ -4,7 +4,12 @@ import { AXIOS } from "../../../app/axios-http";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import Button from "react-bootstrap/Button";
 import { login } from "../../../features/auth/authSlice";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function Login() {
   const initialFormLogin = {
@@ -56,56 +61,55 @@ export default function Login() {
   };
 
   return (
-    <div className="container ">
-      <div className="row justify-content-center">
-        <div>
-          <h2>Login</h2>
-        </div>
-      </div>
-      <div className="row justify-content-center">
-        <div className="col-6">
-          <form>
-            <div className="form-group">
-              <label htmlFor="exampleInputEmail1">Email address</label>
-              <input
+    <Container>
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <div>
+            <h2>Login</h2>
+          </div>
+          <Form>
+            <Form.Group>
+              <Form.Label htmlFor="login-email">Email address</Form.Label>
+              <Form.Control
                 type="email"
                 className="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
+                id="login-email"
+                aria-describedby="login-email-help"
                 placeholder="Enter email"
                 onChange={(e) => handleFormLogin("email", e.target.value)}
                 value={formLogin.email}
               />
-              <small id="emailHelp" className="form-text text-muted">
+              <small id="login-email-help" className="form-text text-muted">
                 user@gmail.com
               </small>
-            </div>
-            <div className="form-group">
-              <label htmlFor="exampleInputPassword1">Password</label>
-              <input
+            </Form.Group>
+            <Form.Group>
+              <Form.Label htmlFor="login-password">Password</Form.Label>
+              <Form.Control
                 type="password"
                 autoComplete="on"
                 className="form-control"
-                id="exampleInputPassword1"
+                id="login-password"
+                aria-describedby="login-password-help"
                 placeholder="Password"
                 onChange={(e) => handleFormLogin("password", e.target.value)}
                 value={formLogin.password}
               />
-              <small id="emailHelp2" className="form-text text-muted">
+              <small id="login-password-help" className="form-text text-muted">
                 user
               </small>
-            </div>
-            <button
+            </Form.Group>
+            <Button
               type="submit"
-              className="btn btn-primary"
               onClick={(e) => handleSubmit(e)}
               disabled={isRequesting}
+              size="sm"
             >
               Submit
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }

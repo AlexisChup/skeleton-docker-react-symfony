@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { login, logout } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 import "./Home.css";
+import Button from "react-bootstrap/Button";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -77,23 +78,24 @@ export default function Home() {
           <div className="col">
             <h2>Test Auth</h2>
             {isAuthenticated ? (
-              <button
-                className="btn btn-danger btn-sm"
+              <Button
                 onClick={() => {
                   handleLogoutTest();
                 }}
+                variant="danger"
+                size="sm"
               >
                 Logout
-              </button>
+              </Button>
             ) : (
-              <button
-                className="btn btn-primary btn-sm"
+              <Button
                 onClick={() => {
                   handleLoginTest();
                 }}
+                size="sm"
               >
                 Login
-              </button>
+              </Button>
             )}
           </div>
           <Counter />

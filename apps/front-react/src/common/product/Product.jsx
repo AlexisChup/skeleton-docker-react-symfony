@@ -3,7 +3,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AXIOS } from "../../app/axios-http";
 import { FaTrash } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
 import "./Product.css";
+import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default class Product extends Component {
   constructor(props) {
@@ -86,20 +91,20 @@ export default class Product extends Component {
 
   render() {
     return (
-      <div className="">
-        <div className="row justify-center align-content-center">
-          <div className="col">
+      <Container>
+        <Row className="justify-center align-content-center">
+          <Col>
             <h2>Test Backend</h2>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-sm">
+          </Col>
+        </Row>
+        <Row>
+          <Col sm>
             <h2>Create a product</h2>
-            <form className="p-3 shadow rounded">
-              <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label htmlFor="inputName">Name</label>
-                  <input
+            <Form.Group className="p-3 shadow rounded">
+              <Row>
+                <Col className="p-0 mr-1">
+                  <Form.Label htmlFor="inputName">Name</Form.Label>
+                  <Form.Control
                     onChange={(e) =>
                       this.handleFormProduct("name", e.target.value)
                     }
@@ -109,10 +114,10 @@ export default class Product extends Component {
                     id="inputName"
                     placeholder="Name"
                   />
-                </div>
-                <div className="form-group col-md-6">
-                  <label htmlFor="inputPrice">Price</label>
-                  <input
+                </Col>
+                <Col className="p-0 ml-1">
+                  <Form.Label htmlFor="inputPrice">Price</Form.Label>
+                  <Form.Control
                     onChange={(e) =>
                       this.handleFormProduct("price", e.target.value)
                     }
@@ -122,42 +127,43 @@ export default class Product extends Component {
                     id="inputPrice"
                     placeholder="Price"
                   />
-                </div>
-              </div>
-              <div className="form-group">
-                <label htmlFor="inputDescription">Description</label>
-                <textarea
+                </Col>
+              </Row>
+              <Row>
+                <Form.Label htmlFor="inputDescription">Description</Form.Label>
+                <Form.Control
                   onChange={(e) =>
                     this.handleFormProduct("description", e.target.value)
                   }
                   value={this.state.productEditing.description}
-                  type="text"
+                  as="textarea"
                   className="form-control"
                   id="inputDescription"
                   placeholder="Description"
                 />
-              </div>
-              {this.state.isRequesting ? (
-                <div className="spinner-border text-primary" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-              ) : (
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-sm"
-                  onClick={(e) => this.handlePostProduct(e)}
-                >
-                  Submit
-                </button>
-              )}
-            </form>
-          </div>
-          <div className="col-sm">
+              </Row>
+              <Row>
+                {this.state.isRequesting ? (
+                  <div className="spinner-border text-primary" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                ) : (
+                  <div className="mt-2">
+                    <Button
+                      type="submit"
+                      onClick={(e) => this.handlePostProduct(e)}
+                      size="sm"
+                    >
+                      Submit
+                    </Button>
+                  </div>
+                )}
+              </Row>
+            </Form.Group>
+          </Col>
+          <Col>
             <h2>Product's list</h2>
-            <div
-              className="container"
-              style={{ overflowY: "scroll", maxHeight: "30vh" }}
-            >
+            <div style={{ overflowY: "scroll", maxHeight: "30vh" }}>
               <table className="table table-striped table-sm hover">
                 <thead>
                   <tr>
@@ -177,21 +183,22 @@ export default class Product extends Component {
                       <td>{prod.description}</td>
                       <td>
                         {" "}
-                        <button
-                          className="btn btn-danger btn-sm"
+                        <Button
                           onClick={(e) => this.handleDeleteProduct(e, prod.id)}
+                          size="sm"
+                          variant="danger"
                         >
                           <FaTrash />
-                        </button>
+                        </Button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
