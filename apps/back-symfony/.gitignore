@@ -7,7 +7,6 @@
 /public/bundles/
 /var/
 /vendor/
-/migrations/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
@@ -19,14 +18,10 @@
 /tests/report/
 
 composer.lock
-/migrations/
 
 .idea/
 
 storage/
-
-/bin/
-/migrations/
 
 ###> lexik/jwt-authentication-bundle ###
 /config/jwt/*.pem
