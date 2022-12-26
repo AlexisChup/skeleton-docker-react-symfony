@@ -1,20 +1,29 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Footer() {
-  let navigate = useNavigate();
   return (
     <footer className="Footer d-flex justify-content-center">
       <div>
         <span>Copyright © 2022</span>
-        <a onClick={() => navigate("/terms-of-service")}>
+        <NavLink
+          to="terms-of-service"
+          className={({ isActive }) =>
+            isActive ? "navbar-navlink-active" : "navbar-navlink"
+          }
+        >
           {" "}
           - Terms of Service -{" "}
-        </a>
-        <a onClick={() => navigate("/privacy-and-cookies")}>
+        </NavLink>
+        <NavLink
+          to="privacy-and-cookies"
+          className={({ isActive }) =>
+            isActive ? "navbar-navlink-active" : "navbar-navlink"
+          }
+        >
           Privacy and Cookies
-        </a>
+        </NavLink>
       </div>
     </footer>
   );

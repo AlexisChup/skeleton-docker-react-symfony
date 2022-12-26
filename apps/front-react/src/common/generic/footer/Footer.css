@@ -1,2 +1,23 @@
-.Footer {
+.navbar-navlink-active {
+  color: #094067;
+  font-weight: bold;
+}
+
+.navbar-navlink {
+  color: #d1d1e9;
+}
+
+.navbar-navlink,
+.navbar-navlink:hover,
+.navbar-navlink-active,
+.navbar-navlink-active:hover {
+  text-decoration: none;
+  font-size: large;
+}
+
+.navbar-navlink:hover {
+  color: #094067;
+}
+.navbar-navlink-active:hover {
+  color: #094067;
 }
