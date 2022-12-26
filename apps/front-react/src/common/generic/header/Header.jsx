@@ -78,7 +78,6 @@ export default function Header() {
           )}
         </div>
       </nav>
-      <LogoutModal />
     </header>
   );
 }
