@@ -57,9 +57,10 @@
 - Build Docker Images `make runbuild`
 - Wait few minutes, the 1st build might take some times
 - Generate the SSL keys
-  1.1 Run `docker exec -it php-fpm sh`
-  1.2 Run `php bin/console lexik:jwt:generate-keypair`
-- Load Fixtures, run `php bin/console doctrine:fixtures:load`
+- - Run `docker exec -it php-fpm sh`
+- - Run `php bin/console lexik:jwt:generate-keypair`
+- Load Fixtures
+- - Run `php bin/console doctrine:fixtures:load`
 - Open browser at [http://localhost:9090](http://localhost:9090)
 - React app should display a form for testing backend integration
 - Try to fill in and submit the form
@@ -73,6 +74,11 @@
 
 - `make runbuild`
 - Wait few minutes, the 1st build might take some times
+- Generate the SSL keys
+- - Run `docker exec -it php-fpm sh`
+- - Run `php bin/console lexik:jwt:generate-keypair`
+- Load Fixtures
+- - Run `php bin/console doctrine:fixtures:load`
 - Open browser at [http://localhost:9090](http://localhost:9090)
 
 ### Start containers other times
