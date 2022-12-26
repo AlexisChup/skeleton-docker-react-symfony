@@ -38,10 +38,10 @@ export default function Settings() {
 
   return (
     <div className="">
-      <h3>Settings</h3>
+      <h2>Settings</h2>
       <div>
         <div>
-          <h4>Reset Password</h4>
+          <h3>Reset Password</h3>
           <form>
             <div className="from-group">
               <input
@@ -71,7 +71,7 @@ export default function Settings() {
         </div>
       </div>
       <div className="">
-        <h4>Log out</h4>
+        <h3>Log out</h3>
         <button
           disabled={isRequesting}
           type="button"

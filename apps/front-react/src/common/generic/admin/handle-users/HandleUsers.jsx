@@ -42,7 +42,7 @@ export default function HandleUsers() {
 
   return (
     <div className="">
-      <h3>HandleUsers</h3>
+      <h2>HandleUsers</h2>
       {isRequesting ? (
         <Spinner />
       ) : (

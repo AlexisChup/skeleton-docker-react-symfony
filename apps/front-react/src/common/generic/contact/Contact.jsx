@@ -7,7 +7,7 @@ export default class Contact extends Component {
       <div className="container ">
         <div className="row justify-content-center">
           <div>
-            <h2>Contact</h2>
+            <h1>Contact</h1>
           </div>
         </div>
       </div>

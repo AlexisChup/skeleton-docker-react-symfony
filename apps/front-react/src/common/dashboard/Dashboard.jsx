@@ -31,7 +31,7 @@ export default function Dashboard() {
 
   return (
     <div className="container">
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
       <div className="shadow p-3">
         <div className="d-flex flex-row">
           <div className="mr-2">
