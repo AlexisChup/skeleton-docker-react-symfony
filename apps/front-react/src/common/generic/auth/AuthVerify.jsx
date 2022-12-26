@@ -48,6 +48,7 @@ const AuthVerify = (props) => {
 
       dispatch(logout());
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.router.location]);
 
   return <></>;

@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import "./HandleUsers.css";
+import { FaPen } from "react-icons/fa";
+import Button from "react-bootstrap/Button";
 import { AXIOS } from "../../../../app/axios-http";
 import Spinner from "../../spinner/Spinner";
-import { FaPen } from "react-icons/fa";
 import HandleUsersModal from "./handle-users-modal/HandleUsersModal";
-import Button from "react-bootstrap/Button";
 
 export default function HandleUsers() {
   const initialStateUsers = [];

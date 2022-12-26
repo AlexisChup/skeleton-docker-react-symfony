@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./HandleUsersModal.css";
+import { toast } from "react-toastify";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Spinner from "../../../spinner/Spinner";
 import { AXIOS } from "../../../../../app/axios-http";
-import { toast } from "react-toastify";
+import Spinner from "../../../spinner/Spinner";
 
 export default function HandleUsersModal(props) {
   let [formEditUser, setFormEditUser] = useState(null);

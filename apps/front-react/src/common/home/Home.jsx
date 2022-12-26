@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import Product from "../product/Product";
 import Counter from "../../features/counter/counter";
 import { AXIOS } from "../../app/axios-http";
@@ -79,6 +79,7 @@ export default function Home() {
             <h2>Test Auth</h2>
             {isAuthenticated ? (
               <Button
+                disabled={isRequesting}
                 onClick={() => {
                   handleLogoutTest();
                 }}
@@ -89,6 +90,7 @@ export default function Home() {
               </Button>
             ) : (
               <Button
+                disabled={isRequesting}
                 onClick={() => {
                   handleLoginTest();
                 }}

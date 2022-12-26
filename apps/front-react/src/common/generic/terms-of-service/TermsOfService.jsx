@@ -65,6 +65,7 @@ export default function TermOfService() {
                 <a
                   href="https://www.freeprivacypolicy.com/free-terms-and-conditions-generator/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   Free Terms and Conditions Generator
                 </a>
@@ -84,7 +85,7 @@ export default function TermOfService() {
                 <strong>Website</strong> refers to My Website, accessible from{" "}
                 <a
                   href="https://my-website.com"
-                  rel="external nofollow noopener"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   https://my-website.com

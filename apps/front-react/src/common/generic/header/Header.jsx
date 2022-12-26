@@ -1,7 +1,7 @@
 import "./Header.css";
 import { NavLink } from "react-router-dom";
-import LogoutModal from "../logout/logout-modal/LogoutModal";
 import { useSelector } from "react-redux";
+import LogoutModal from "../logout/logout-modal/LogoutModal";
 
 export default function Header() {
   const { isAuthenticated } = useSelector((state) => state.auth);

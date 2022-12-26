@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Profile.css";
-import { AXIOS } from "../../../app/axios-http";
 import { useLocation } from "react-router-dom";
 
 export default function Profile() {

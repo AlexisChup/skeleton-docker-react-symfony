@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
-import { AXIOS } from "../../app/axios-http";
-import { FaUserCircle, FaWrench, FaUsers } from "react-icons/fa";
-import Spinner from "../generic/spinner/Spinner";
 import "./Dashboard.css";
+import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { FaUserCircle, FaWrench, FaUsers } from "react-icons/fa";
+import { AXIOS } from "../../app/axios-http";
+import Spinner from "../generic/spinner/Spinner";
 
 export default function Dashboard() {
   let [isRequesting, setIsRequesting] = useState(false);
@@ -27,6 +27,7 @@ export default function Dashboard() {
       })
       .catch((e) => console.log(e))
       .finally(() => setIsRequesting(false));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

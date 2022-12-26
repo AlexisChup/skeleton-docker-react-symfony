@@ -22,6 +22,7 @@ export default function PrivacyAndCookies() {
             <a
               href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
               target="_blank"
+              rel="noreferrer"
             >
               Free Privacy Policy Generator
             </a>
@@ -105,7 +106,7 @@ export default function PrivacyAndCookies() {
                 <strong>Website</strong> refers to My Website, accessible from{" "}
                 <a
                   href="https://my-website.com"
-                  rel="external nofollow noopener"
+                  rel="noreferrer"
                   target="_blank"
                 >
                   https://my-website.com
@@ -200,6 +201,7 @@ export default function PrivacyAndCookies() {
             <a
               href="https://www.freeprivacypolicy.com/blog/sample-privacy-policy-template/#Use_Of_Cookies_And_Tracking"
               target="_blank"
+              rel="noreferrer"
             >
               Free Privacy Policy website
             </a>{" "}
