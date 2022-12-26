@@ -46,12 +46,20 @@
 ┃┣📜.env
 ```
 
+- Edit database name (`POSTGRES_DB`), for db service, under `environment` line 10 in:
+
+```
+📂skeleton-docker-react-symfony
+┃┣📜docker-compose.yaml
+```
+
 - Return to root of the project
 - Build Docker Images `make runbuild`
 - Wait few minutes, the 1st build might take some times
 - Generate the SSL keys
   1.1 Run `docker exec -it php-fpm sh`
   1.2 Run `php bin/console lexik:jwt:generate-keypair`
+- Load Fixtures, run `php bin/console doctrine:fixtures:load`
 - Open browser at [http://localhost:9090](http://localhost:9090)
 - React app should display a form for testing backend integration
 - Try to fill in and submit the form
